@@ -1,20 +1,20 @@
 package br.com.icev.estuturadados.questoes.manipulandopilhas;
 import java.util.Stack;
 public class GerenciadorDesfazer {
-    private Stack<Acao> pilhaDesfazer;
+    private Stack<Acao> DesfazendoPilha;
 
     public GerenciadorDesfazer() {
-        pilhaDesfazer = new Stack<>();
+        DesfazendoPilha = new Stack<>();
     }
 
     public void executarAcao(Acao acao) {
         acao.executar();
-        pilhaDesfazer.push(acao);
+        DesfazendoPilha.push(acao);
     }
 
     public void desfazerUltimaAcao() {
-        if (!pilhaDesfazer.isEmpty()) {
-            Acao ultimaAcao = pilhaDesfazer.pop();
+        if (!DesfazendoPilha.isEmpty()) {
+            Acao ultimaAcao = DesfazendoPilha.pop();
             ultimaAcao.desfazer();
         } else {
             System.out.println("Nenhuma ação para desfazer.");
@@ -31,12 +31,10 @@ class Acao {
 
     public void executar() {
         System.out.println("Executando ação: " + nome);
-        // Lógica para executar a ação
     }
 
     public void desfazer() {
         System.out.println("Desfazendo ação: " + nome);
-        // Lógica para desfazer a ação
     }
 }
 
